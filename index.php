@@ -7,7 +7,11 @@ require 'Database.php';
 $dbconfig = require('dbconfig.php');
 
 $db = new Database($dbconfig['database']);
-$users = $db->query("select * from users")->fetchAll(PDO::FETCH_ASSOC);
+
+$id = ($_GET['id']);
+$query = "select * from users where id = ?";
+
+$users = $db->query($query, [$id])->fetch(PDO::FETCH_ASSOC);
 
 dd($users);
 
