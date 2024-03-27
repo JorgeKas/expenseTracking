@@ -1,18 +1,6 @@
 <?php
 
-// parse_url func. seperates uri from query string if any
-// ['path'] appends to the end to return only the path variable we want
-$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
-
-
-$routes = [
-  '/' => 'controllers/index.php',
-  '/about' => 'controllers/about.php',
-  '/notes' => 'controllers/notes.php',
-  '/note' => 'controllers/note.php',
-  '/contact' => 'controllers/contact.php',
-
-];
+$routes = require('routes.php');
 
 function routeToController($uri, $routes)
 {
@@ -30,5 +18,8 @@ function abort($code = 404)
   die();
 }
 
+// parse_url func. seperates uri from query string if any
+// ['path'] appends to the end to return only the path variable we want
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 routeToController($uri, $routes);

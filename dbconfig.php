@@ -8,5 +8,6 @@ return [
   'charset' => 'utf8mb4'
   ],
   'staging' => [],
-  'production' => []
+  'production' => [],
+  'etc' => []
 ];
