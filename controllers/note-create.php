@@ -1,5 +1,7 @@
 <?php
 
+require 'Validator.php';
+
 $config = require('dbconfig.php');
 $db = new Database($config['database']);
 
@@ -8,9 +10,11 @@ $heading = 'Create a Note';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   
     $errors = [];
+
+    $validator = new Validator();
     
     // client-side validation for empty text
-    if (strlen($_POST['body']) === 0) {
+    if ($validator->string($_POST['body'])) {
       $errors['body'] = 'A body is required';
     }
 
