@@ -14,13 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $validator = new Validator();
     
     // client-side validation for empty text
-    if ($validator->string($_POST['body'])) {
-      $errors['body'] = 'A body is required';
-    }
-
-    // Server side validation for maximum amount of chars in the form
-    if (strlen($_POST['body']) > 10) {
-      $errors['body'] = 'Message cannot be more than 10 characters';
+    if (! Validator::string($_POST['body'], 1, 10)) {
+      $errors['body'] = 'A body of no more than 10 chars is required';
     }
 
     //Create record on db since validation is ok
@@ -32,4 +27,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-require "views/note-create.view.php";
+require "views/notes/create.view.php";
