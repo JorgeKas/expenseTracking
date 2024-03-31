@@ -1,16 +1,13 @@
 <?php
 
-require 'Validator.php';
-
-$config = require('dbconfig.php');
+require base_path('Validator.php');
+$config = require base_path('dbconfig.php');
 $db = new Database($config['database']);
 
-$heading = 'Create a Note';
+$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   
-    $errors = [];
-
     $validator = new Validator();
     
     // client-side validation for empty text
@@ -27,4 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-require "views/notes/create.view.php";
+view("notes/create.view.php", [
+  'heading' => 'Create a Note',
+  'errors' => $errors
+]);
