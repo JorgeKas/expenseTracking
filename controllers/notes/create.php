@@ -1,6 +1,9 @@
 <?php
 
-require base_path('Validator.php');
+use Core\Database;
+
+
+
 $config = require base_path('dbconfig.php');
 $db = new Database($config['database']);
 
@@ -8,8 +11,6 @@ $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   
-    $validator = new Validator();
-    
     // client-side validation for empty text
     if (! Validator::string($_POST['body'], 1, 10)) {
       $errors['body'] = 'A body of no more than 10 chars is required';

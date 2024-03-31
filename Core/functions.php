@@ -1,5 +1,6 @@
 <?php
 
+
 function dd($value)
 {
 //Wrap super global with HTML pre tag

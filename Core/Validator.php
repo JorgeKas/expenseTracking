@@ -1,5 +1,7 @@
 <?php
 
+use Core;
+
 class Validator
 {
 
