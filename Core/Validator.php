@@ -1,6 +1,6 @@
 <?php
 
-use Core;
+namespace Core;
 
 class Validator
 {
