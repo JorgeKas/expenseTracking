@@ -1,10 +1,11 @@
 <?php
 
 use Core\Database;
+use Core\Validator;
 
-
-
+// Create the db configuration so
 $config = require base_path('dbconfig.php');
+// we can pass it to the constructor
 $db = new Database($config['database']);
 
 $errors = [];
@@ -12,8 +13,8 @@ $errors = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   
     // client-side validation for empty text
-    if (! Validator::string($_POST['body'], 1, 10)) {
-      $errors['body'] = 'A body of no more than 10 chars is required';
+    if (! Validator::string($_POST['body'], 1, 40)) {
+      $errors['body'] = 'A body of no more than 40 chars is required';
     }
 
     //Create record on db since validation is ok
