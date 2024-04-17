@@ -7,7 +7,12 @@ $router->get('/contact', 'controllers/contact.php');
 
 $router->get('/notes','controllers/notes/index.php');
 $router->get('/note', 'controllers/notes/show.php');
+$router->delete('/note', 'controllers/notes/destroy.php');
+
+// Request to show the form for new note creation
 $router->get('/notes/create', 'controllers/notes/create.php');
+// Request to create a new note 
+$router->post('/notes', 'controllers/notes/store.php');
 
 
 //$router->get('', '');
