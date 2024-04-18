@@ -2,12 +2,14 @@
 
 // controller for persisting a new note to DB
 
-use Core\Validator;
+use Core\App;
 use Core\Database;
+use Core\Validator;
 
-$config = require base_path('dbconfig.php');
-$db = new Core\Database($config['database']);
+// $config = require base_path('dbconfig.php');
+// $db = new Database($config['database']);
 
+$db = App::resolve(Database::class);
 $errors = [];
 
 // client-side validation for empty text
