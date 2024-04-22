@@ -1,5 +1,7 @@
 <?php
 
+// Show all the notes
+
 use Core\App;
 use Core\Database;
 

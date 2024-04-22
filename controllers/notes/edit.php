@@ -1,14 +1,13 @@
 <?php
 
+// Controller to edit a form for note creation
+
 use Core\App;
 use Core\Database;
-
-// Controller to edit a form for note creation
 
 $db = App::resolve(Database::class);
 
 $currentUserId = 1;
-
 
 $note = $db->query('select * from notes where id = :id', [
   'id' => $_GET['id']

@@ -1,5 +1,7 @@
 <?php
 
+// Show a specific note
+
 use Core\App;
 use Core\Database;
 
