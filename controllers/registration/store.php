@@ -20,18 +20,19 @@ if (!Validator::string($password, 7, 255)) {
 
 if (!empty($errors)) {
  return view('registration/create.view.php', [
-  'errors' => $errors]);
+  'errors' => $errors
+  ]);
 }
 
 $db = App::resolve(Database::class);
 // Check if the account already exists
-$result = $db->query('SELECT * FROM users WHERE email = :email', [
+$user = $db->query('SELECT * FROM users WHERE email = :email', [
   'email' => $email
   ])->find();
 
 // if it does redirect to the login page
-if ($result) {
-  header('Location: /');
+if ($user) {
+  header('Location: /login');
   exit();
 } else {
   // if not then save the account to the database and log the user in and redirect
