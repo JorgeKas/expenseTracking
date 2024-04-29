@@ -1,8 +1,11 @@
 <?php
 
-session_start();
+use Core\Session;
+use Core\ValidationException;
 
 const BASE_PATH = __DIR__ .'/../';
+
+session_start();
 
 require BASE_PATH .'Core/functions.php';
 
