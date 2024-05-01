@@ -41,10 +41,9 @@ if ($user) {
     'password' => password_hash($password, PASSWORD_BCRYPT)
   ]);
 
-  // Mark the user as logged in
-  $_SESSION['user'] = [
-    'email' => $email
-  ];
+ login([
+  'email' => $email,
+ ]);
 
   header ('Location: /');
   exit();
